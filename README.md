@@ -47,7 +47,9 @@ Or build the DMG with `make dmg` and drag the app to Applications from the disk 
 
 ## Configuration
 
-On first launch, AudioTier generates a config file at `~/.config/audiotier/config.json` listing all connected devices. Reorder the lists to set your priority — the first device in each list is the highest priority.
+On first launch, open **Edit Config...** from the menu bar icon to define your device priorities. Only currently connected devices will be shown, so make sure to connect all the devices you want to prioritize before editing.
+
+Reorder the lists to set your priority — the first device in each list is the highest priority:
 
 ```json
 {
@@ -62,7 +64,7 @@ On first launch, AudioTier generates a config file at `~/.config/audiotier/confi
 }
 ```
 
-You can edit this file directly or use **Edit Config...** from the menu bar icon.
+Once saved, your priorities are persisted in `~/.config/audiotier/config.json` — devices remain in the list even when disconnected, so you only need to configure them once. You can also edit this file directly.
 
 ## Uninstall
 
