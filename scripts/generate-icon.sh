@@ -3,7 +3,9 @@
 set -euo pipefail
 
 OUTPUT_DIR="${1:-.}"
-SOURCE_IMAGE="${2:-$HOME/Downloads/audiotier-removebg-preview.png}"
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
+SOURCE_IMAGE="${2:-$PROJECT_DIR/assets/icon.png}"
 ICONSET_DIR=$(mktemp -d)/AppIcon.iconset
 mkdir -p "$ICONSET_DIR"
 

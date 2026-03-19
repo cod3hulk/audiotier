@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/icon.png" alt="AudioTier icon" width="200">
+</p>
+
 # AudioTier
 
 A lightweight macOS menu bar app that automatically switches your default audio input and output devices based on a configurable priority list.

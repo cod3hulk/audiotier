@@ -28,11 +28,11 @@ if [ -f "$PROJECT_DIR/scripts/generate-icon.sh" ]; then
     bash "$PROJECT_DIR/scripts/generate-icon.sh" "$APP_DIR/Contents/Resources"
 fi
 
-# Generate menu bar icon (18pt = 36px @2x), fit preserving aspect ratio
-SOURCE_IMAGE="${SOURCE_IMAGE:-$HOME/Downloads/audiotier-removebg-preview.png}"
-if [ -f "$SOURCE_IMAGE" ]; then
-    sips --resampleHeight 36 "$SOURCE_IMAGE" --out "$APP_DIR/Contents/Resources/MenuBarIcon.png" > /dev/null
-    echo "==> Menu bar icon generated"
+# Copy menu bar icon (pre-generated monochrome template)
+MENUBAR_ICON="$PROJECT_DIR/assets/menubar-icon.png"
+if [ -f "$MENUBAR_ICON" ]; then
+    cp "$MENUBAR_ICON" "$APP_DIR/Contents/Resources/MenuBarIcon.png"
+    echo "==> Menu bar icon copied"
 fi
 
 echo "==> App bundle created at: $APP_DIR"
