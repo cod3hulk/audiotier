@@ -54,11 +54,11 @@ Reorder the lists to set your priority — the first device in each list is the 
 ```json
 {
     "audioInput": [
-        "Scarlett Solo 4th Gen",
+        "USB Microphone",
         "MacBook Pro Microphone"
     ],
     "audioOutput": [
-        "AirPods Pro 2",
+        "External Headphones",
         "MacBook Pro Speakers"
     ]
 }
