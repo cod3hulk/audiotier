@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/icon.png" alt="AudioTier icon" width="200">
+  <img src="assets/icon-readme.png" alt="AudioTier icon" width="200">
 </p>
 
 # AudioTier
