@@ -28,11 +28,15 @@ if [ -f "$PROJECT_DIR/scripts/generate-icon.sh" ]; then
     bash "$PROJECT_DIR/scripts/generate-icon.sh" "$APP_DIR/Contents/Resources"
 fi
 
-# Copy menu bar icon (pre-generated monochrome template)
-MENUBAR_ICON="$PROJECT_DIR/assets/menubar-icon.png"
-if [ -f "$MENUBAR_ICON" ]; then
-    cp "$MENUBAR_ICON" "$APP_DIR/Contents/Resources/MenuBarIcon.png"
-    echo "==> Menu bar icon copied"
+# Copy menu bar icon (PNG takes priority — proper alpha-channel template)
+MENUBAR_ICON_PNG="$PROJECT_DIR/assets/menubar-icon-template.png"
+MENUBAR_ICON_SVG="$PROJECT_DIR/assets/menubar-icon.svg"
+if [ -f "$MENUBAR_ICON_PNG" ]; then
+    cp "$MENUBAR_ICON_PNG" "$APP_DIR/Contents/Resources/MenuBarIcon.png"
+    echo "==> Menu bar icon (PNG) copied"
+elif [ -f "$MENUBAR_ICON_SVG" ]; then
+    cp "$MENUBAR_ICON_SVG" "$APP_DIR/Contents/Resources/MenuBarIcon.svg"
+    echo "==> Menu bar icon (SVG) copied"
 fi
 
 echo "==> App bundle created at: $APP_DIR"

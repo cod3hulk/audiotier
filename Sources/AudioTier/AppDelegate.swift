@@ -27,13 +27,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
 
         if let button = statusItem.button {
-            if let iconPath = Bundle.main.pathForImageResource("MenuBarIcon"),
-               let icon = NSImage(contentsOfFile: iconPath) {
-                let aspect = icon.size.width / icon.size.height
-                icon.size = NSSize(width: 18 * aspect, height: 18)
-                icon.isTemplate = true
-                button.image = icon
-            } else if let icon = loadMenuBarIcon() {
+            if let icon = loadMenuBarIcon() {
                 let aspect = icon.size.width / icon.size.height
                 icon.size = NSSize(width: 18 * aspect, height: 18)
                 icon.isTemplate = true
@@ -50,15 +44,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     private func loadMenuBarIcon() -> NSImage? {
-        // Look for icon in Resources directory next to the binary
         let bundle = Bundle.main
-        let resourcePaths = [
-            bundle.resourcePath.map { $0 + "/MenuBarIcon.png" },
-            bundle.bundlePath + "/Contents/Resources/MenuBarIcon.png",
-        ]
-        for path in resourcePaths.compactMap({ $0 }) {
-            if let img = NSImage(contentsOfFile: path) {
-                return img
+        let dirs = [bundle.resourcePath, bundle.bundlePath + "/Contents/Resources"].compactMap { $0 }
+        for dir in dirs {
+            for name in ["MenuBarIcon.png", "MenuBarIcon.svg"] {
+                if let img = NSImage(contentsOfFile: dir + "/" + name) {
+                    return img
+                }
             }
         }
         return nil
