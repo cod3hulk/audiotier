@@ -141,6 +141,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         reapply.target = self
         menu.addItem(reapply)
 
+        let launchAtLogin = NSMenuItem(
+            title: "Launch at Login",
+            action: #selector(toggleLaunchAtLogin),
+            keyEquivalent: ""
+        )
+        launchAtLogin.target = self
+        launchAtLogin.state = LoginItem.isEnabled ? .on : .off
+        menu.addItem(launchAtLogin)
+
         menu.addItem(NSMenuItem.separator())
 
         let quit = NSMenuItem(
@@ -187,6 +196,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @objc private func reapplyPriorities() {
         switcher.reloadConfig()
         switcher.applyPriorities()
+        rebuildMenu()
+    }
+
+    @objc private func toggleLaunchAtLogin() {
+        LoginItem.setEnabled(!LoginItem.isEnabled)
         rebuildMenu()
     }
 
