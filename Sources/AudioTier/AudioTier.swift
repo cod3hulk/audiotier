@@ -23,7 +23,7 @@ class AudioTier {
         let connected = audio.getInputDevices()
         let currentDefault = audio.getDefaultInputDevice()
 
-        guard let best = bestDevice(from: config.audioInput, connected: connected) else { return }
+        guard let best = AudioTier.bestDevice(from: config.audioInput, connected: connected) else { return }
 
         if best.id != currentDefault {
             if audio.setDefaultInputDevice(best.id) {
@@ -40,7 +40,7 @@ class AudioTier {
         let connected = audio.getOutputDevices()
         let currentDefault = audio.getDefaultOutputDevice()
 
-        guard let best = bestDevice(from: config.audioOutput, connected: connected) else { return }
+        guard let best = AudioTier.bestDevice(from: config.audioOutput, connected: connected) else { return }
 
         if best.id != currentDefault {
             if audio.setDefaultOutputDevice(best.id) {
@@ -64,7 +64,7 @@ class AudioTier {
 
     // MARK: - Private
 
-    private func bestDevice(from priority: [String], connected: [AudioDevice]) -> AudioDevice? {
+    static func bestDevice(from priority: [String], connected: [AudioDevice]) -> AudioDevice? {
         // Find the highest-priority device that is currently connected
         for name in priority {
             if let device = connected.first(where: { $0.name == name }) {

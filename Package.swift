@@ -12,6 +12,10 @@ let package = Package(
                 .linkedFramework("AVFoundation"),
                 .linkedFramework("AppKit")
             ]
+        ),
+        .testTarget(
+            name: "AudioTierTests",
+            dependencies: ["AudioTier"]
         )
     ]
 )

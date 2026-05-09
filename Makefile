@@ -1,9 +1,12 @@
 CONFIG_DIR = $(HOME)/.config/audiotier
 
-.PHONY: build app dmg install uninstall run config clean
+.PHONY: build app dmg install uninstall run config clean test
 
 build:
 	swift build -c release
+
+test:
+	swift test
 
 app: build
 	bash scripts/build-app.sh

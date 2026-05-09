@@ -7,6 +7,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ```bash
 make build      # Compile release binary (swift build -c release)
 make run        # Run in development (swift run)
+make test       # Run XCTest suite (swift test)
 make app        # Build .app bundle via scripts/build-app.sh
 make dmg        # Create distributable DMG
 make install    # Copy .app to /Applications and create default config
@@ -15,7 +16,9 @@ make clean      # Remove .build/ and build/ directories
 make config     # Create ~/.config/audiotier/config.json if missing
 ```
 
-There are no tests or linting tools configured in this project.
+Tests live in `Tests/AudioTierTests/` and cover the pure-logic surface: priority matching (`AudioTier.bestDevice`), `AudioDevice.transportName`, and `DeviceConfig` Codable round-trip. CoreAudio, SMAppService, and AppKit code is not unit-tested.
+
+No linting tools are configured.
 
 ## Architecture
 
